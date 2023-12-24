@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title> Galaxy </title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: purple;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 20px;
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+section {
+    background-color: black ;
+    padding: 50px;
+    margin: 50px 0;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: none;
+    padding: 20;
+}
+
+li {
+    margin-bottom: 30px;
+    color:  #ccc;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: px;
+    }
+}
+</style>
+</head>
+<body>
+
+    <h1> Galaxy </h1>
+
+    <!-- Search Engine -->
+    <form action="/search" method="get">
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search" placeholder="Enter your search">
+        <button type="submit">Search</button>
+    </form>
+
+ 
+            <!-- Section 1: Artists -->
+    <section id="artistsSection">
+        <h2>Artists</h2>
+        <ul>
+            <li><img src="mazen.jpeg" width="100px" height="100px" alt="zone">Zone
+                <ol>
+                    <li><p><audio src="zzzz.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="nesh.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+            <li><img src="cheese.jpeg" width="100px" height="100px" alt="kamel">Volcano
+                <ol>
+                    <li><p><audio src="vovo2.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="vovo.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+            <li><img src="omar.jpeg" width="100px" height="100px" alt="omar">Skinny beats
+                <ol>
+                    <li><p><audio src="omar1.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="omar2.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Section 2: Music Genres -->
+    <section id="genresSection">
+        <h2>Music Genres</h2>
+        <ul>
+            <li>Rap
+                <ol>
+                    <li><p><audio src="omar1.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="omar2.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="zzzz.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="nesh.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="vovo2.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="vovo.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+            <li>Beats
+                <ol>
+                    <li><p><audio src="dasty bun beat final.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="final beat.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Section 3: Playlists -->
+    <section id="playlistsSection">
+        <h2>Playlists</h2>
+        <ul>
+            <li>Mix
+                <ol>
+                    <li><p><audio src="omar1.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="omar2.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="nesh.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="vovo2.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="final beat.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+            <li>My Playlist
+                <ol>
+                    <li><p><audio src="zzzz.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="nesh.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="cancel (khofash).mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="picasso.mp3" controls type="audio/m3"></audio></p></li>
+                    <li><p><audio src="mazen.mp3" controls type="audio/m3"></audio></p></li>
+                </ol>
+            </li>
+        </ul>
+    </section>
+
+    <script>
+        // JavaScript for playing and pausing audio
+        function setupAudio(sectionId) {
+            const section = document.getElementById(sectionId);
+
+            section.querySelectorAll('audio').forEach(audio => {
+                audio.addEventListener('play', () => {
+                    pauseOtherPlayers(sectionId, audio);
+                });
+            });
+        }
+
+        function pauseOtherPlayers(sectionId, currentPlayer) {
+            document.querySelectorAll(`#${sectionId} audio`).forEach(audio => {
+                if (audio !== currentPlayer) {
+                    audio.pause();
+                }
+            });
+        }
+
+        // Call setupAudio for each section
+        setupAudio('artistsSection');
+        setupAudio('genresSection');
+        setupAudio('playlistsSection');
+    </script>
+
+</body>
+</html>
